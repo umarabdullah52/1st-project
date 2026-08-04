@@ -1,0 +1,271 @@
+/* ==========================================================================
+   1. DESIGN SYSTEM VARIABLES (2025 DESIGN SYSTEM COMPLIANCE)
+   ========================================================================== */
+:root {
+    /* Color Palette */
+    --clr-mocha: #A5856F;       /* Mocha Mousse (Stability) */
+    --clr-blue: #A0D4E0;        /* Ethereal Blue (Trust) */
+    --clr-grey: #F2F0EA;        /* Moonlit Grey (Refinement Canvas) */
+    --clr-dark: #2C2A29;        /* Grounded Dark Text/Accents */
+    --clr-white: #FFFFFF;
+    
+    /* Typography Limits (Max 2 Font Families, 3 Weights: 400, 500, 700) */
+    --ff-heading: 'Montserrat', 'Inter', sans-serif;
+    --ff-body: 'Roboto', 'Open Sans', sans-serif;
+    
+    /* Fluid Scale Constraints via clamp() */
+    --fs-h1: clamp(1.85rem, 3.5vw + 1rem, 3.25rem);
+    --fs-h2: clamp(1.35rem, 2vw + 0.8rem, 1.85rem);
+    --fs-body: clamp(1rem, 0.8vw + 0.5rem, 1.1rem);
+    
+    /* Transitions & Layout Consts */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --max-width: 1440px;
+}
+
+/* ==========================================================================
+   2. SYSTEM RESETS & BASE INTEGRITY
+   ========================================================================== */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--ff-body);
+    font-size: var(--fs-body);
+    background-color: var(--clr-grey);
+    color: var(--clr-dark);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--ff-heading);
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--clr-dark);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ==========================================================================
+   3. MICRO COMPONENTS (FLEXBOX DESIGN STREAMS)
+   ========================================================================== */
+/* Header Structure */
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 5%;
+    background-color: var(--clr-white);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-family: var(--ff-heading);
+    font-weight: 700;
+    font-size: 1.35rem;
+    letter-spacing: -0.5px;
+}
+
+/* Micro Nav Links Navigation Map */
+.main-nav {
+    display: flex;
+    align-items: center;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-links a {
+    font-weight: 500;
+    transition: var(--transition-smooth);
+    position: relative;
+}
+
+.nav-links a:hover {
+    color: var(--clr-mocha);
+}
+
+/* Responsive UI Action Button Component */
+.btn-primary {
+    background-color: var(--clr-mocha);
+    color: var(--clr-white);
+    border: none;
+    padding: 0.7rem 1.4rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: var(--ff-heading);
+    font-weight: 600;
+    transition: var(--transition-smooth);
+    box-shadow: 0 2px 6px rgba(165, 133, 111, 0.2);
+}
+
+.btn-primary:hover {
+    background-color: var(--clr-dark);
+    box-shadow: 0 4px 12px rgba(44, 42, 41, 0.25);
+}
+
+/* Mobile Toggle Hamburger Layout */
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.75rem;
+    cursor: pointer;
+    color: var(--clr-dark);
+}
+
+/* ==========================================================================
+   4. MACRO ENGINE (MOBILE-FIRST FLEXIBLE GRID CONFIGURATION)
+   ========================================================================== */
+.macro-layout {
+    display: grid;
+    grid-template-columns: 1fr; /* 1 Column Standard Default Base Layout */
+    gap: 2rem;
+    padding: 2rem 5%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+
+/* Strategic Supplemental Context Panel */
+.sidebar {
+    background-color: var(--clr-white);
+    padding: 2rem;
+    border-radius: 12px;
+    border-left: 4px solid var(--clr-blue);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+    height: fit-content;
+}
+
+.sidebar h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+}
+
+/* Core Interface Viewport Display Stream */
+.hero-section {
+    background: linear-gradient(135deg, rgba(160, 212, 224, 0.25), rgba(242, 240, 234, 0.4));
+    padding: clamp(2rem, 5vw + 1rem, 4rem) 2rem;
+    border-radius: 12px;
+    margin-bottom: 2.5rem;
+    border-left: 5px solid var(--clr-mocha);
+}
+
+.hero-section h1 {
+    font-size: var(--fs-h1);
+    margin-bottom: 1rem;
+    letter-spacing: -1px;
+}
+
+.hero-section p {
+    max-width: 700px;
+    color: rgba(44, 42, 41, 0.85);
+}
+
+/* Content Auto Layout Stream Grid Configuration */
+.content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    gap: 1.75rem;
+}
+
+/* Distributable Content Grid Units Card Layout Blocks */
+.card {
+    background: var(--clr-white);
+    padding: 2rem;
+    border-radius: 10px;
+    border-top: 4px solid var(--clr-mocha);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+    transition: var(--transition-smooth);
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    border-top-color: var(--clr-blue);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.05);
+}
+
+.card h2 {
+    font-size: var(--fs-h2);
+    margin: 0.75rem 0;
+}
+
+.icon-placeholder {
+    font-size: 1.75rem;
+    display: inline-block;
+    padding: 0.5rem;
+    background-color: var(--clr-grey);
+    border-radius: 8px;
+}
+
+/* ==========================================================================
+   5. SITE TERMINAL STRUCTURE (FOOTER METADATA)
+   ========================================================================== */
+.site-footer {
+    background-color: var(--clr-dark);
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    padding: 2.5rem 2rem;
+    margin-top: 5rem;
+    font-size: 0.95rem;
+    font-family: var(--ff-heading);
+}
+
+/* ==========================================================================
+   6. RESPONSIVE HOOK LAYER (MEDIA QUERIES)
+   ========================================================================== */
+
+/* --- Tablet / Mobile Breakpoint Navigation Interface Layer --- */
+@media (max-width: 768px) {
+    .nav-toggle {
+        display: block; /* Reveals mobile toggle button interaction options */
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--clr-white);
+        flex-direction: column;
+        padding: 2rem;
+        gap: 1.5rem;
+        border-top: 1px solid var(--clr-grey);
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05);
+        opacity: 0;
+        transform: translateY(-10px);
+        pointer-events: none;
+        transition: var(--transition-smooth);
+    }
+
+    /* JavaScript Toggle State Mapping CSS Hook Class Trigger */
+    .nav-links.active {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+    
+    .site-header .btn-primary {
+        display: none; /* Simplifies layout density rules for small formats */
+    }
+}
+
+/* --- Macro Engine Desktop Configuration Blueprint Scale Layer --- */
+@media (min-width: 1024px) {
+    .macro-layout {
+        /* Rigid 2-Dimensional Floor Plan Structure Layout Constraint Mapping */
+        grid-template-columns: 280px 1fr;
+    }
+}
